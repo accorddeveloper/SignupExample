@@ -1,0 +1,89 @@
+﻿@{
+    ViewBag.Title = "Signup Success";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Signup Success!</h2>
+<div class="container-fluid" id="divMain">
+
+</div>
+
+@section scripts {
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var signupId = localStorage.getItem('signupId');
+        if (signupId) {
+            var url = '/Home/GetSignup?id=' + signupId;
+            $.get(url, '', function (data, textStatus, jqXHR) { hydratePage(data); }, 'json');
+        }
+    });
+
+    var hydratePage = function (data) {
+        if (data) {
+            var template = Handlebars.compile($('#results-template').html());
+            var html = template(data);
+            $('#divMain').empty().append(html);
+        }
+    };
+</script>
+<script type="text/x-handlebars-template" id="results-template">
+    <div>
+        <div class="row fieldgroup">
+            <div class="col-xs-3">
+                <label for="firstname" class="label label-default">First Name</label>
+            </div>
+            <div class="col-xs-9">{{FirstName}}</div>
+        </div>
+        <div class="row fieldgroup">
+            <div class="col-xs-3">
+                <label for="lastname" class="label label-default">Last Name</label>
+            </div>
+            <div class="col-xs-9">{{LastName}}</div>
+        </div>
+        <div class="row fieldgroup">
+            <div class="col-xs-3">
+                <label for="gender" class="label label-default">Gender</label>
+            </div>
+            <div class="col-xs-9">{{Gender}}</div>
+        </div>
+        <div class="row fieldgroup">
+            <div class="col-xs-3">
+                <label for="phone" class="label label-default">Phone</label>
+            </div>
+            <div class="col-xs-9">{{Phone}}</div>
+        </div>
+        <div class="row fieldgroup">
+            <div class="col-xs-3">
+                <label for="email" class="label label-default">Email</label>
+            </div>
+            <div class="col-xs-9">{{Email}}</div>
+        </div>
+        <div class="row fieldgroup">
+            <div class="col-xs-3">
+                <label for="address" class="label label-default">Address</label>
+            </div>
+            <div class="col-xs-9">{{Address}}</div>
+        </div>
+        <div class="row fieldgroup">
+            <div class="col-xs-3">
+                <label for="city" class="label label-default">City</label>
+            </div>
+            <div class="col-xs-9">{{City}}</div>
+        </div>
+        <div class="row fieldgroup">
+            <div class="col-xs-3">
+                <label for="state" class="label label-default">State</label>
+            </div>
+            <div class="col-xs-9">{{State}}</div>
+        </div>
+        <div class="row fieldgroup">
+            <div class="col-xs-3">
+                <label for="zip" class="label label-default">Zip</label>
+            </div>
+            <div class="col-xs-9">{{Zip}}</div>
+        </div>
+        <br />
+    </div>
+</script>
+}

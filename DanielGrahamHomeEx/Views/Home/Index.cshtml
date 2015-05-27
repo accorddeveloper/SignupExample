@@ -1,0 +1,232 @@
+﻿@{
+    ViewBag.Title = "Signup Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>Signup</h1>
+
+<form action="" method="post" id="signup-form" novalidate="novalidate">
+    <div class="container-fluid" id="form-content">
+        <fieldset>
+            <div class="row fieldgroup">
+                <div class="col-xs-3">
+                    <label for="firstname" class="label label-default">First Name</label>
+                </div>
+                <div class="col-xs-9">
+                    <input type="text" id="firstname" name="firstname" maxlength="100" />
+                </div>
+            </div>
+            <div class="row fieldgroup">
+                <div class="col-xs-3">
+                    <label for="lastname" class="label label-default">Last Name</label>
+                </div>
+                <div class="col-xs-9">
+                    <input type="text" id="lastname" name="lastname" maxlength="200" />
+                </div>
+            </div>
+            <div class="row fieldgroup">
+                <div class="col-xs-3">
+                    <label for="gender" class="label label-default">Gender</label>
+                </div>
+                <div class="col-xs-9">
+                    <select id="gender" name="gender">
+                        <option value=""></option>
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row fieldgroup">
+                <div class="col-xs-3">
+                    <label for="phone" class="label label-default">Phone</label>
+                </div>
+                <div class="col-xs-9">
+                    <input type="number" id="phone" name="phone" maxlength="25" />
+                </div>
+            </div>
+            <div class="row fieldgroup">
+                <div class="col-xs-3">
+                    <label for="email" class="label label-default">Email</label>
+                </div>
+                <div class="col-xs-9">
+                    <input type="email" id="email" name="email" maxlength="255" />
+                </div>
+            </div>
+            <div class="row fieldgroup">
+                <div class="col-xs-3">
+                    <label for="address" class="label label-default">Address</label>
+                </div>
+                <div class="col-xs-9">
+                    <input type="text" id="address" name="address" maxlength="255" />
+                </div>
+            </div>
+            <div class="row fieldgroup">
+                <div class="col-xs-3">
+                    <label for="city" class="label label-default">City</label>
+                </div>
+                <div class="col-xs-9">
+                    <input type="text" id="city" name="city" maxlength="100" />
+                </div>
+            </div>
+            <div class="row fieldgroup">
+                <div class="col-xs-3">
+                    <label for="state" class="label label-default">State</label>
+                </div>
+                <div class="col-xs-9">
+                    <select id="state" name="state" class="dropdown">
+                        <option value=""></option>
+                        <option value="AL">Alabama</option>
+                        <option value="AK">Alaska</option>
+                        <option value="AZ">Arizona</option>
+                        <option value="AR">Arkansas</option>
+                        <option value="CA">California</option>
+                        <option value="CO">Colorado</option>
+                        <option value="CT">Connecticut</option>
+                        <option value="DE">Delaware</option>
+                        <option value="DC">District Of Columbia</option>
+                        <option value="FL">Florida</option>
+                        <option value="GA">Georgia</option>
+                        <option value="HI">Hawaii</option>
+                        <option value="ID">Idaho</option>
+                        <option value="IL">Illinois</option>
+                        <option value="IN">Indiana</option>
+                        <option value="IA">Iowa</option>
+                        <option value="KS">Kansas</option>
+                        <option value="KY">Kentucky</option>
+                        <option value="LA">Louisiana</option>
+                        <option value="ME">Maine</option>
+                        <option value="MD">Maryland</option>
+                        <option value="MA">Massachusetts</option>
+                        <option value="MI">Michigan</option>
+                        <option value="MN">Minnesota</option>
+                        <option value="MS">Mississippi</option>
+                        <option value="MO">Missouri</option>
+                        <option value="MT">Montana</option>
+                        <option value="NE">Nebraska</option>
+                        <option value="NV">Nevada</option>
+                        <option value="NH">New Hampshire</option>
+                        <option value="NJ">New Jersey</option>
+                        <option value="NM">New Mexico</option>
+                        <option value="NY">New York</option>
+                        <option value="NC">North Carolina</option>
+                        <option value="ND">North Dakota</option>
+                        <option value="OH">Ohio</option>
+                        <option value="OK">Oklahoma</option>
+                        <option value="OR">Oregon</option>
+                        <option value="PA">Pennsylvania</option>
+                        <option value="RI">Rhode Island</option>
+                        <option value="SC">South Carolina</option>
+                        <option value="SD">South Dakota</option>
+                        <option value="TN">Tennessee</option>
+                        <option value="TX">Texas</option>
+                        <option value="UT">Utah</option>
+                        <option value="VT">Vermont</option>
+                        <option value="VA">Virginia</option>
+                        <option value="WA">Washington</option>
+                        <option value="WV">West Virginia</option>
+                        <option value="WI">Wisconsin</option>
+                        <option value="WY">Wyoming</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row fieldgroup">
+                <div class="col-xs-3">
+                    <label for="zip" class="label label-default">Zip</label>
+                </div>
+                <div class="col-xs-9">
+                    <input type="number" id="zip" name="zip" maxlength="10" />
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-xs-12">
+                    <input type="submit" class="btn btn-primary" id="btnSignup" value="Signup!" />
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</form>
+
+@section scripts {
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#signup-form').validate({
+            rules: {
+                firstname: "required",
+                lastname: "required",
+                email: {
+                    required: true,
+                    email: true
+                },
+                gender: "required",
+                phone: {
+                    required: true,
+                    number: true
+                },
+                address: "required",
+                city: "required",
+                state: "required",
+                zip: {
+                    required: true,
+                    number: true
+                }
+            },
+            messages: {
+                firstname: "Please enter your firstname",
+                lastname: "Please enter your lastname",
+                email: "Please enter a valid email address",
+                gender: "Please select a valid gender",
+                phone: "Please enter a valid phone number",
+                address: "Please enter an address",
+                city: "Please enter a city",
+                state: "Please select your state",
+                zip: "Please enter a zip"
+            },
+            submitHandler: function (form) {
+                postData();
+            }
+        });
+    });
+
+    var buildPayload = function () {
+        var obj = {
+            Id: null,
+            FirstName: $('#firstname').val(),
+            LastName: $('#lastname').val(),
+            Gender: $('#gender').val(),
+            Phone: $('#phone').val(),
+            Email: $('#email').val(),
+            Address: $('#address').val(),
+            City: $('#city').val(),
+            State: $('#state').val(),
+            Zip: $('#zip').val()
+        };
+        return JSON.stringify(obj);
+    };
+    var postData = function () {
+        var payload = buildPayload();
+        console.log(payload);
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            processData: true,
+            data: payload,
+            url: '/Home/PostSignup',
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert(jqXHR.responseText);
+                console.log(textStatus);
+                console.log(errorThrown);
+                return false;
+            },
+            success: function (data) {
+                if (data && data.Id) {
+                    localStorage.setItem('signupId', data.Id);
+                    window.location.href = '/Home/SignupSuccess';
+                } else {
+                    alert("There was a problem in saving your signup. Please try again later");
+                }
+            }
+        });
+    };
+</script>
+}
